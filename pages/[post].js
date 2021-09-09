@@ -7,7 +7,7 @@ export default function Post() {
 	const router = useRouter();
 	const {
 		query: { post },
-	} = router
+	} = router;
 
 	const getPost = async () => {
 		try {

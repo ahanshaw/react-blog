@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import Router from 'next/router'
+import { useRouter } from 'next/router';
+
 import { PostItem } from "../components/PostItem/PostItem";
 import { PostPagination } from "../components/PostPagination/PostPagination";
 
@@ -9,6 +12,8 @@ export default function Home() {
 	const numberPerPage = 8;
 	const totalPages = Math.ceil(posts.length / numberPerPage);
 	const [isLoading, setLoading] = useState(true);
+	const router = useRouter();
+	const { query: { page }} = router;
 
 	// get blog posts
 	const getPosts = async () => {
@@ -23,33 +28,40 @@ export default function Home() {
 	}
 
     useEffect(() => {
-        getPosts();
-	}, []);
+		getPosts();
+		if (!page) {
+			setCurrentPage(1);
+		}
+	}, [page]);
 
 	// paginate blog posts
 	const getPaginatedPosts = () => {
 		setPaginatedPosts(posts.slice(currentPage * numberPerPage - numberPerPage, currentPage * numberPerPage));
-		window.scroll({top: 0, left: 0, behavior: 'smooth' })
+		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 	}
 
 	const firstPage = () => {
 		setCurrentPage(1);
 		getPaginatedPosts();
+		Router.push(`/?page=1`);
 	}
 
 	const lastPage = () => {
 		setCurrentPage(totalPages);
 		getPaginatedPosts();
+		Router.push(`/?page=${totalPages}`);
 	}
 
 	const nextPage = () => {
 		setCurrentPage(currentPage + 1);
 		getPaginatedPosts();
+		Router.push(`/?page=${currentPage + 1}`);
 	}
 
 	const prevPage = () => {
 		setCurrentPage(currentPage - 1);
 		getPaginatedPosts();
+		Router.push(`/?page=${currentPage - 1}`);
 	}
 
 	useEffect(() => {
