@@ -1,0 +1,55 @@
+/* general */
+
+html {
+    font-size: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    @include font-reg;
+    @include font-size(18);
+    line-height: 1.5;
+    color: $black;
+    background-color: $white;
+}
+
+h1 {
+    @include font-bold;
+    @include font-size(36);
+    line-height: 1.2;
+    margin: 0 0 40px 0;
+}
+
+h2 {
+    @include font-med;
+    line-height: 1.2;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 100px);
+    max-width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto 20px auto;
+    padding: 25px 0 0 0;
+
+    @include tablet {
+        width: calc(100% - 50px);
+    }
+
+    @include mobile {
+        width: calc(100% - 20px);
+    }
+}
