@@ -1,5 +1,13 @@
 .post {
     &__container {
         @include container();
+
+        .post-updated {
+            margin-top: -10px;
+        }
+
+        .post-body {
+            margin: 20px 0 0 0;
+        }
     }
 }

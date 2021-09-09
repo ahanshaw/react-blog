@@ -1,0 +1,5 @@
+.loader {
+    &__container {
+        @include container;
+    }
+}

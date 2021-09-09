@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+import { Loader } from "../components/Loader/Loader";
+
 export default function Post() {
 	const [blogPost, setBlogPost] = useState([]);
 	const [isLoading, setLoading] = useState(true);
@@ -27,15 +29,18 @@ export default function Post() {
 	
 	if (isLoading){
         return (
-           <p>Loading...</p>
+           <Loader />
         );
 	}
 	
 	return (
 		<div className="post__container">
 			<h1>{blogPost.title}</h1>
-			<p>{new Date(blogPost.created_at).toLocaleDateString()}</p>
-			<p>{blogPost.body}</p>
+			<p className="post-created">Posted: {new Date(blogPost.created_at).toLocaleDateString()}</p>
+			{blogPost.created_at !== blogPost.updated_at &&
+				<p className="post-updated">Updated: {new Date(blogPost.updated_at).toLocaleDateString()}</p>
+			}
+			<p className="post-body">{blogPost.body}</p>
 		</div>
 	);
 }

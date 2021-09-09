@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Router from 'next/router'
 import { useRouter } from 'next/router';
 
+import { Loader } from "../components/Loader/Loader";
 import { PostItem } from "../components/PostItem/PostItem";
 import { PostPagination } from "../components/PostPagination/PostPagination";
 
@@ -70,7 +71,7 @@ export default function Home() {
 	
 	if (isLoading){
         return (
-           <p>Loading...</p>
+          <Loader />
         );
     }
 
