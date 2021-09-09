@@ -9,9 +9,13 @@ export default function Layout({ children }) {
 				<title>Blog Posties</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Header />
-				<main>{children}</main>
-			<Footer />
+			<div className="wrapper">
+				<div>
+					<Header />
+					<main>{children}</main>
+				</div>
+				<Footer />
+			</div>
 		</>
 	)
 }

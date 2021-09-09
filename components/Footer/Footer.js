@@ -1,7 +1,9 @@
 export default function Footer() {
 	return (
-		<footer>
-			<small>&copy; 2021</small>
+		<footer className="footer">
+			<div className="footer__container">
+				<small>&copy; 2021</small>
+			</div>
 		</footer>
 	)
 }

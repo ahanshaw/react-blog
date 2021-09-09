@@ -1,5 +1,11 @@
 .footer {
-    @include font-size(14);
-    text-align: center;
-    margin-top: 40px;
+    &__container {
+        @include container();
+
+        small {
+            @include font(14, 21);
+            text-align: center;
+            margin-top: 40px;
+        }
+    }
 }

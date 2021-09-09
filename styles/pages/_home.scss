@@ -1,0 +1,9 @@
+.home {
+    &__list {
+        @include container();
+    }
+
+    &__item {
+        margin: 0 0 50px 0;
+    }
+}
